@@ -1,9 +1,14 @@
 import { doCreateUserWithEmailAndPassword } from "../../../Firebase/auth";
 import { useAuth } from "../../../contexts/authContext";
-import {Navigate} from "react-router-dom";
-import React, {useState} from "react";
+import { Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../../Firebase/firebase";
+import "./register.css";
 
-const Register = ()=> {
+const Register = () => {
+    const { userLoggedIn } = useAuth();
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -12,33 +17,67 @@ const Register = ()=> {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(password !== confirmPassword){
+        setErrorMessage("");
+        if (password !== confirmPassword) {
             setErrorMessage("Passwords do not match");
             return;
-        }if(!isRegistering){
-            setIsRegistering(true);
-            await doCreateUserWithEmailAndPassword(email, password);
         }
+        if (!isRegistering) {
+            setIsRegistering(true);
+            try {
+                await doCreateUserWithEmailAndPassword(email, password);
+                // Set the displayName (username) in Firebase Auth profile
+                await updateProfile(auth.currentUser, { displayName: username });
+            } catch (error) {
+                setErrorMessage(error.message);
+            }
+            setIsRegistering(false);
+        }
+    };
+
+    if (userLoggedIn) {
+        return <Navigate to="/home" replace={true} />;
     }
 
-    return(
-        <>
-         {userLoggedIn && (<Navigate to="/home" replace={true}/>)}
-        <div>
+    return (
+        <div className="register-container">
             <h1>Register</h1>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             <form onSubmit={onSubmit}>
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
                 <label htmlFor="email">Email</label>
-                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
                 <label htmlFor="password">Password</label>
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <input type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value) } required/>
-                <button type="submit">Register</button>
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+                <button type="submit" disabled={isRegistering}>
+                    {isRegistering ? "Registering..." : "Register"}
+                </button>
             </form>
         </div>
-        </>
-    )
-    
-}
+    );
+};
 
 export default Register;

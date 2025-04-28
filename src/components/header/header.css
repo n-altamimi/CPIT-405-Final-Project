@@ -1,0 +1,49 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #2c5f3d; /* KAU blue, change as you like */
+  color: #fff;
+  padding: 16px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.header-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.header nav {
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    margin-left: auto;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+  }
+
+  .header button {
+    background: #fff;
+    color: #1976d2;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .header button:last-child {
+    margin-right: 3lh
+  }
+.header button:hover {
+  background: #1565c0;
+  color: #fff;
+}
