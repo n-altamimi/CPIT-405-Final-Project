@@ -3,8 +3,9 @@ import { useAuth } from "../../../contexts/authContext";
 import { Navigate } from "react-router-dom";
 import React, { useState } from "react";
 import { updateProfile } from "firebase/auth";
-import { auth } from "../../../Firebase/firebase";
+import { auth, db } from "../../../Firebase/firebase";
 import "./register.css";
+import { doc, setDoc } from "firebase/firestore";
 
 const Register = () => {
     const { userLoggedIn } = useAuth();
@@ -26,8 +27,13 @@ const Register = () => {
             setIsRegistering(true);
             try {
                 await doCreateUserWithEmailAndPassword(email, password);
-                // Set the displayName (username) in Firebase Auth profile
                 await updateProfile(auth.currentUser, { displayName: username });
+                // Save user role in Firestore
+                await setDoc(doc(db, "users", auth.currentUser.uid), {
+                    username,
+                    email,
+                    role: 3 // 3 = student (default)
+                });
             } catch (error) {
                 setErrorMessage(error.message);
             }
