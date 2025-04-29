@@ -2,14 +2,15 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 
 export default function ProtectedHome({ children }) {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   
-  if (!user) {
+  if (!currentUser) {
     return <Navigate to="/login" />;
   }
   
   return children;
 }
+
 
 
 
