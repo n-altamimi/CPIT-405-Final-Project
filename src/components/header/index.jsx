@@ -15,7 +15,9 @@ const Header = ()=> {
             {
                 userLoggedIn ? (
                     <>
-                    <button onClick={()=>navigate("/login")}>My favorit </button>
+                    <button onClick={()=>navigate("/home")}>Home </button>
+
+                    <button onClick={()=>navigate("/favorites")}>My favorit </button>
                     <button onClick={()=>doSignOut().then(()=>navigate("/login"))}>Logout</button>
                     </>
                 ) : (
