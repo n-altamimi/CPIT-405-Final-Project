@@ -7,7 +7,9 @@ Students miss events because announcements are scattered.
 Organizations struggle to promote events.
 
 Need a centralized calendar platform for events at KAU.
+
 ---------------------------------------------------------
+
 **Target Users**
 
 Students → Discover & Join events
@@ -17,7 +19,9 @@ Organizers → Create & Manage events
 Admins → Manage everything (events + users maybe)
 
 Staff → Post official university events (treated like organizers/admins)
+
 ---------------------------------------------------------
+
 **Pages** 
 1- Auth 
 2- Home
