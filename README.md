@@ -35,7 +35,7 @@ Staff → Post official university events (treated like organizers/admins)
 
 ## Implementation 
 
-####Creating the auth methods 
+###Creating the auth methods 
 ![Creating the auth methods ](./src/img/Create%20and%20login%20type.png)
 
 ### Activiate Firebase auth method 
