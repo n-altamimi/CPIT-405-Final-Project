@@ -19,9 +19,8 @@ function App() {
           <Home /> 
           </ProtectedHome>
           } />    
-        <Route path="/manage" 
-         element={ <Manage/> } />    
-
+        <Route path="/manage" element={ <Manage/> } />  
+        <Route path="/" element={<Login />} />  
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/favorites" element={<Favorites />} />

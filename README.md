@@ -1,12 +1,57 @@
-# React + Vite
+# KAU Event Calendar App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔴 **Problem**
 
-Currently, two official plugins are available:
+Students miss events because announcements are scattered.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Organizations struggle to promote events.
 
-## Expanding the ESLint configuration
+Need a centralized calendar platform for events at KAU.
+---------------------------------------------------------
+**Target Users**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Students → Discover & Join events
+
+Organizers → Create & Manage events
+
+Admins → Manage everything (events + users maybe)
+
+Staff → Post official university events (treated like organizers/admins)
+---------------------------------------------------------
+**Pages** 
+1- Auth 
+2- Home
+3- My favorites 
+4- Craete/Manage
+
+## Implementation 
+
+####Creating the auth methods 
+![Creating the auth methods ](./src/img/Create%20and%20login%20type.png)
+
+### Activiate Firebase auth method 
+![Firebase](./src/img/Firebase.png) 
+
+### Initilize Firebase auth method 
+![Firebase instance](./src/img/Initilize%20Firebase%20instance.png) 
+
+### Create the pages 
+![Components](./src/img/Components.png) 
+
+### Firestone to store users data  
+![Components](./src/img/Firestone.png) 
+
+### Protected route
+![Components](./src/img/Protected.png) 
+
+### Google Calendar API 
+![Components](./src/img/GoogleCalendar.png) 
+
+### Login page
+![Components](./src/img/LoginPage.png) 
+
+### Home page
+![Components](./src/img/HomePage.png) 
+
+### Create and Manage page 
+![Components](./src/img/Create.png) 
