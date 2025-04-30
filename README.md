@@ -24,8 +24,11 @@ Staff → Post official university events (treated like organizers/admins)
 
 **Pages** 
 1- Auth 
+
 2- Home
+
 3- My favorites 
+
 4- Craete/Manage
 
 ## Implementation 
